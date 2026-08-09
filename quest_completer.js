@@ -353,7 +353,6 @@
       this.root.innerHTML = `
                 <div id="orion-head">
                     <span id="orion-title">${ICONS.BOLT} ${CONFIG.NAME}
-                        <span class="dev-credit">by matin</span>
                         <span style="opacity:0.6; font-size:10px; margin-left:4px; padding-top: 3px; font-weight:500;">${CONFIG.VERSION}</span>
                     </span>
                     <div id="orion-controls">
@@ -2452,8 +2451,8 @@
             `[Cycle] Processing: ${queues.video.length} videos, ${queues.game.length} games.`,
             "info",
           );
-          const pGames = runConcurrent(queues.game, 1);
-          const pVideos = runConcurrent(queues.video, 2);
+          const pGames = runConcurrent(queues.game, 4);
+          const pVideos = runConcurrent(queues.video, 3);
           await Promise.all([pGames, pVideos]);
         } else {
           if (active.length === 0) {

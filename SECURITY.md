@@ -1,8 +1,10 @@
 # Security Policy — Discord Quest Auto Completer
 
+**Languages:** [English](SECURITY.md) · [Русский](SECURITY.ru.md)
+
 ## Supported Versions
 
-This Discord quest auto completer project is provided "as-is" and is not guaranteed to be maintained on a fixed schedule. Security fixes (if any) are typically applied to the latest `main` branch and the most recent release.
+This project is provided "as-is" and is not guaranteed to be maintained on a fixed schedule. Security fixes (if any) are typically applied to the latest `main` branch and the most recent release.
 
 | Version | Supported |
 |---------|-----------|
@@ -12,20 +14,19 @@ This Discord quest auto completer project is provided "as-is" and is not guarant
 
 ## Reporting a Vulnerability
 
-If you believe you have found a security vulnerability in the Discord quest auto completer, please report it **privately** and **responsibly**.
+If you believe you have found a security vulnerability, please report it **privately** and **responsibly**.
 
 ### Preferred Contact
 
-- Email: **me@matinshahabadi.ir**
-- Subject line: **[SECURITY] discord-quest-auto-completer — <short summary>**
+- Discord: **nandak070** (`1219803151180370021`)
+- GitHub: [nanda070](https://github.com/nanda070) (private advisory if available)
+- Subject / title: **[SECURITY] QuestMaster — \<short summary\>**
 
 ### What to Include
 
-To help reproduce and assess the impact, please include:
-
 - A clear description of the issue and potential impact
 - Steps to reproduce (minimal PoC, if applicable)
-- Affected environment (OS, Discord client version, and any relevant settings)
+- Affected environment (OS, Discord client version, relevant settings)
 - Relevant logs, screenshots, or stack traces (redact sensitive data)
 - Whether the issue is reliably reproducible
 
@@ -37,7 +38,7 @@ To help reproduce and assess the impact, please include:
 
 ## Response and Disclosure Timeline
 
-I will try to acknowledge valid reports within **7 days**. If confirmed, I will work on a fix and coordinate a responsible disclosure timeline where possible. Timelines may vary depending on severity and availability.
+Valid reports are typically acknowledged within **7 days**. If confirmed, a fix and responsible disclosure timeline will be coordinated where possible. Timelines may vary by severity and availability.
 
 ## Scope
 
