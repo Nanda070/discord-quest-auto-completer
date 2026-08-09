@@ -45,7 +45,13 @@ Open via **Toolbox → Open QuestMaster** (or Auto-start).
 
 ## Author
 
-**nandak070** · Discord `1219803151180370021` · [GitHub](https://github.com/nanda070) · [cheterin.online](https://cheterin.online)
+**Nanda**
+
+| | |
+|:--|:--|
+| Discord | **nandak070** (`1219803151180370021`) |
+| GitHub | [nanda070](https://github.com/nanda070) |
+| Website | [cheterin.online](https://cheterin.online) |
 
 ---
 

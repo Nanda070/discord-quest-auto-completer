@@ -1,6 +1,6 @@
 /*
  * Vencord, a Discord client mod
- * Copyright (c) 2026 nanda070
+ * Copyright (c) 2026 Nanda
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -8,7 +8,7 @@ export const PLUGIN_NAME = "QuestMaster";
 export const PLUGIN_VERSION = "v2.0.0";
 
 export const AUTHOR = {
-    name: "nandak070",
+    name: "Nanda",
     id: 1219803151180370021n,
     github: "nanda070",
     website: "https://cheterin.online",

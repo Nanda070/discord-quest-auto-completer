@@ -6,24 +6,14 @@
 
 [English](README.md) · [Русский](README.ru.md)
 
-<br>
-
 [![Vencord](https://img.shields.io/badge/Vencord-userplugin-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://docs.vencord.dev/)
 [![Version](https://img.shields.io/badge/v2.0.0-111827?style=for-the-badge)](questMaster/constants.ts)
 [![License](https://img.shields.io/badge/MIT-0A0A0A?style=for-the-badge)](LICENSE)
 [![Desktop](https://img.shields.io/badge/Discord-Desktop-23A559?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/download)
 
-<br>
-
 видео · игры · стримы · активности · достижения
 
-<br>
-
-<sub>
-  автор <a href="https://github.com/nanda070"><b>nandak070</b></a>
-  · <a href="https://cheterin.online">cheterin.online</a>
-  · Discord <code>1219803151180370021</code>
-</sub>
+<sub>автор <b>Nanda</b> · <a href="https://cheterin.online">cheterin.online</a></sub>
 
 </div>
 
@@ -77,8 +67,6 @@
 
 <details>
 <summary><b>Запасной вариант — консольный скрипт</b> <code>quest_completer.js</code></summary>
-
-<br>
 
 Если Vencord недоступен. Вставлять заново после каждой перезагрузки Discord.
 
@@ -163,6 +151,16 @@ discord-quest-auto-completer/
 
 ---
 
+## Связь
+
+| | |
+|:--|:--|
+| Discord | **nandak070** (`1219803151180370021`) |
+| GitHub | [nanda070](https://github.com/nanda070) |
+| Сайт | [cheterin.online](https://cheterin.online) |
+
+---
+
 ## Безопасность
 
 Уязвимости — только приватно: [SECURITY.ru.md](SECURITY.ru.md).
@@ -176,11 +174,6 @@ discord-quest-auto-completer/
 ---
 
 <div align="center">
-
-<sub>Для тех, кто хочет закрыть квесты — а не жить в Discover.</sub>
-
-<br><br>
-
-**nandak070** · [GitHub](https://github.com/nanda070) · [cheterin.online](https://cheterin.online)
-
+<sub>Для тех, кто хочет закрыть квесты — а не жить в Discover.</sub><br>
+<strong>Nanda</strong> · <a href="https://github.com/nanda070">GitHub</a> · <a href="https://cheterin.online">cheterin.online</a>
 </div>

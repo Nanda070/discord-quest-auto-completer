@@ -1,6 +1,6 @@
 /*
  * Vencord, a Discord client mod
- * Copyright (c) 2026 nanda070
+ * Copyright (c) 2026 Nanda
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -26,7 +26,7 @@ export default definePlugin({
         "Auto-complete Discord Quests with an in-app dashboard (video, game, stream, activity, achievements).",
     authors: [
         {
-            name: "nandak070",
+            name: "Nanda",
             id: 1219803151180370021n,
         },
     ],
