@@ -1,36 +1,53 @@
-# QuestMaster — Vencord Plugin
+<div align="center">
 
-**Languages:** [English](../README.md) · [Русский](../README.ru.md)
+# QuestMaster
 
-Auto-complete Discord Quests with an in-app dashboard. Drop this folder into Vencord `src/userplugins/`.
+**Vencord userplugin** — auto-complete Discord Quests with an in-app dashboard.
 
-## Author
+[English](../README.md) · [Русский](../README.ru.md)
 
-- Discord: **nandak070** (`1219803151180370021`)
-- GitHub: [nanda070](https://github.com/nanda070)
-- Website: [cheterin.online](https://cheterin.online)
+[![Vencord](https://img.shields.io/badge/drop_into-src/userplugins-5865F2?style=flat-square&logo=discord&logoColor=white)](https://docs.vencord.dev/)
+[![v2.0.0](https://img.shields.io/badge/v2.0.0-111827?style=flat-square)](constants.ts)
+
+</div>
+
+---
 
 ## Install
 
-1. Build [Vencord from source](https://docs.vencord.dev/installing/)
-2. Copy this `questMaster` folder to `Vencord/src/userplugins/questMaster`
-3. Rebuild Vencord (`pnpm build` / `npm run build`)
-4. Restart Discord
-5. Enable **QuestMaster** in Settings → Vencord → Plugins
-6. Open via **Vencord Toolbox → Open QuestMaster** (or enable *Auto-start* in plugin settings)
+```bash
+# 1. Vencord from source → https://docs.vencord.dev/installing/
+# 2. Copy this folder:
+cp -r questMaster  Vencord/src/userplugins/questMaster
+
+# 3. Rebuild & restart Discord
+cd Vencord && pnpm build
+```
+
+Then: **Settings → Vencord → Plugins → QuestMaster**  
+Open via **Toolbox → Open QuestMaster** (or Auto-start).
+
+---
 
 ## Files
 
-| File | Purpose |
-|------|---------|
+| File | Role |
+|:-----|:-----|
 | `index.tsx` | Plugin entry, settings, toolbox action |
-| `engine.ts` | Dashboard UI + quest automation |
-| `mods.ts` | Webpack store/API resolution |
-| `native.ts` | CSP-free discordsays requests (desktop) |
-| `settings.ts` | Plugin settings schema |
-| `constants.ts` | Author, events, icons |
+| `engine.ts` | Dashboard + quest automation |
+| `mods.ts` | Webpack stores + RestAPI |
+| `native.ts` | File logging + CSP-free `discordsays` |
+| `settings.ts` | Settings schema |
+| `constants.ts` | Name, version, author, icons |
 | `styles.css` | Dashboard styles |
 
-## Disclaimer
+---
 
-Educational use only. Automation may violate [Discord ToS](https://discord.com/terms). Use at your own risk.
+## Author
+
+**nandak070** · Discord `1219803151180370021` · [GitHub](https://github.com/nanda070) · [cheterin.online](https://cheterin.online)
+
+---
+
+> [!WARNING]
+> Educational use only. May violate [Discord ToS](https://discord.com/terms). Use at your own risk.

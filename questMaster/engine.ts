@@ -63,7 +63,9 @@ async function flushFileLogs() {
 function writeFileLog(type: string, msg: string) {
     if (!settings.store.fileLogging) return;
     const ts = new Date().toISOString();
-    fileLogQueue.push(`[${ts}] [${type.toUpperCase()}] ${msg}`);
+    // Never dump multi-KB HTML 404 pages into the log file
+    const safe = sanitizeErrText(msg, 500) || msg.slice(0, 500);
+    fileLogQueue.push(`[${ts}] [${type.toUpperCase()}] ${safe}`);
     // Cap queue so a native outage cannot grow forever
     while (fileLogQueue.length > 500) fileLogQueue.shift();
     void flushFileLogs();
@@ -287,20 +289,32 @@ const Consent = {
 
 /* ── error classification ─────────────────────────────────── */
 
+function sanitizeErrText(raw: unknown, max = 180): string {
+    if (raw == null) return "";
+    let s = typeof raw === "string" ? raw : String(raw);
+    if (/^\s*<!DOCTYPE html/i.test(s) || /^\s*<html/i.test(s)) {
+        return "[HTML error page]";
+    }
+    s = s.replace(/\s+/g, " ").trim();
+    return s.length > max ? `${s.slice(0, max)}…` : s;
+}
+
 const ErrorHandler = {
     RETRYABLE: new Set([429, 500, 502, 503, 504, 408]),
     CLIENT_ERRORS: new Set([400, 403, 404, 409, 410]),
 
     classify(error: any) {
         const status = error?.status ?? error?.statusCode;
+        const rawMsg =
+            error?.body?.message ??
+            error?.message ??
+            (typeof error?.body === "string" ? error.body : null) ??
+            `HTTP ${status ?? "UNKNOWN"}`;
         return {
             isRetryable: this.RETRYABLE.has(status),
             isClientError: this.CLIENT_ERRORS.has(status),
             status,
-            message:
-                error?.message ??
-                error?.body?.message ??
-                `HTTP ${status ?? "UNKNOWN"}`,
+            message: sanitizeErrText(rawMsg) || `HTTP ${status ?? "UNKNOWN"}`,
         };
     },
 
@@ -1414,8 +1428,9 @@ const Tasks = {
                 id: appId,
             };
         } catch (e: any) {
+            const err = ErrorHandler.classify(e);
             Logger.log(
-                `[FetchGame] Fallback for ${appName}: ${e?.message ?? e}`,
+                `[FetchGame] Fallback for ${appName}: HTTP ${err.status ?? "?"} ${err.message}`,
                 "debug"
             );
             const cleanName = this.sanitize(appName);

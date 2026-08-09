@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { findByCode, findByProps, findStore } from "@webpack";
-import { FluxDispatcher } from "@webpack/common";
+import { findByCode, findStore } from "@webpack";
+import { FluxDispatcher, RestAPI } from "@webpack/common";
 
 declare const DiscordNative: any;
 
@@ -52,30 +52,16 @@ function wrapRouter(mod: any): ModsState["Router"] {
     return null;
 }
 
+/** Prefer Vencord's RestAPI — findByProps can grab a wrong HTTP helper that
+ *  stringifies `{url, body}` into the path as `[object Object]`. */
 function pickAPI(): any {
-    const tryFind = (...props: string[]) => {
-        try {
-            return findByProps(...props);
-        } catch {
-            return null;
-        }
-    };
-
-    const candidates = [
-        tryFind("getAPIBaseURL", "get"),
-        tryFind("get", "post", "put", "del"),
-        tryFind("get", "post", "del"),
-    ];
-
-    for (const api of candidates) {
-        if (
-            api &&
-            typeof api.get === "function" &&
-            typeof api.post === "function" &&
-            typeof api.del === "function"
-        ) {
-            return api;
-        }
+    if (
+        RestAPI &&
+        typeof RestAPI.get === "function" &&
+        typeof RestAPI.post === "function" &&
+        typeof RestAPI.del === "function"
+    ) {
+        return RestAPI;
     }
     return null;
 }

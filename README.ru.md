@@ -1,135 +1,186 @@
-# QuestMaster — Автозавершение квестов Discord (плагин Vencord)
+<div align="center">
 
-**Языки:** [English](README.md) · [Русский](README.ru.md)
+# QuestMaster
 
-<p align="center">
-  <b>Плагин Vencord для автозавершения квестов Discord с панелью внутри клиента</b><br>
-  <sub>Видео · Игры · Стримы · Активности · Достижения</sub>
-</p>
+**Автозавершение квестов Discord — прямо в клиенте.**
 
-## Автор
+[English](README.md) · [Русский](README.ru.md)
+
+<br>
+
+[![Vencord](https://img.shields.io/badge/Vencord-userplugin-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://docs.vencord.dev/)
+[![Version](https://img.shields.io/badge/v2.0.0-111827?style=for-the-badge)](questMaster/constants.ts)
+[![License](https://img.shields.io/badge/MIT-0A0A0A?style=for-the-badge)](LICENSE)
+[![Desktop](https://img.shields.io/badge/Discord-Desktop-23A559?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/download)
+
+<br>
+
+видео · игры · стримы · активности · достижения
+
+<br>
+
+<sub>
+  автор <a href="https://github.com/nanda070"><b>nandak070</b></a>
+  · <a href="https://cheterin.online">cheterin.online</a>
+  · Discord <code>1219803151180370021</code>
+</sub>
+
+</div>
+
+---
+
+> [!WARNING]
+> **Только для обучения.** Автоматизация квестов может нарушать [Условия Discord](https://discord.com/terms). Ответственность за использование — на вас.
+
+---
+
+## Зачем QuestMaster
+
+Живая панель: принимает квесты, гоняет прогресс и закрывает их — не выходя из Discord.
 
 | | |
-|---|---|
-| Discord | **nandak070** (`1219803151180370021`) |
-| GitHub | [nanda070](https://github.com/nanda070) |
-| Сайт | [cheterin.online](https://cheterin.online) |
+|:--|:--|
+| **UI в клиенте** | Перетаскиваемая панель, прогресс, фильтры, логи |
+| **Под Vencord** | Скопировал в `userplugins`, собрал, включил — без DevTools |
+| **Типы квестов** | Видео, игра, стрим, активность, достижения |
+| **Desktop-путь** | Native-хелперы для achievements (мимо CSP) |
+| **Гибкие настройки** | Auto-enroll, auto-claim, параллельность, лог в файл |
+| **Чистый stop** | Откатывает патчи сторов Discord |
 
-## Отказ от ответственности
+---
 
-> Только для образовательных целей. Автоматизация может нарушать [Условия Discord](https://discord.com/terms). **На свой риск.**
+## Установка — плагин Vencord
 
-## Установка (userplugin)
+Рекомендуемый способ. Лучше всего на **Discord Desktop**.
 
-1. Соберите [Vencord из исходников](https://docs.vencord.dev/installing/)
-2. Скопируйте папку `questMaster` в:
-   ```
-   Vencord/src/userplugins/questMaster
-   ```
-3. Пересоберите Vencord и перезапустите Discord
-4. Включите **QuestMaster**: **Settings → Vencord → Plugins**
-5. Откройте через **Vencord Toolbox → Open QuestMaster**  
-   (или включите **Auto-start** в настройках плагина)
+```text
+1  Соберите Vencord из исходников
+   → https://docs.vencord.dev/installing/
 
-> С плагином вставка в DevTools не нужна.
+2  Скопируйте папку
+   questMaster/  →  Vencord/src/userplugins/questMaster/
 
-## Консольный скрипт (`quest_completer.js`)
+3  Пересоберите и перезапустите Discord
+   pnpm build
 
-Без Vencord можно использовать оригинальный скрипт для консоли.
+4  Включите QuestMaster
+   Settings → Vencord → Plugins
 
-### Когда использовать
-- Нет Vencord / нельзя собрать из исходников
-- Разовый запуск без установки плагина
+5  Откройте панель
+   Vencord Toolbox → Open QuestMaster
+   (или оставьте Auto-start)
+```
 
-### Как пользоваться
-1. Откройте **Discord Desktop** (или веб) → **Discover → Quests**
-2. Примите нужные квесты
-3. Откройте **Developer Tools** (`Ctrl+Shift+I` на Windows, `Cmd+Option+I` на Mac)
-4. Вкладка **Console**
-5. Введите `allow pasting` и нажмите Enter
-6. Вставьте содержимое [`quest_completer.js`](quest_completer.js) и нажмите Enter
-7. Появится панель QuestMaster — выберите квесты и нажмите **START**
+Вставка в консоль не нужна.
 
-> Скрыть/показать UI: `>` или `Shift+.`. **STOP** — корректная остановка.
+---
 
-### Сравнение
-| | Плагин Vencord (`questMaster/`) | Консольный скрипт (`quest_completer.js`) |
-|---|---|---|
-| Установка | Копия в Vencord + rebuild | Вставка в DevTools каждый раз |
-| Achievements | Native helpers (лучше на desktop) | Может нужен relay / упрётся в CSP |
-| Сессия | Пока плагин включён | Пропадает после перезагрузки Discord |
+<details>
+<summary><b>Запасной вариант — консольный скрипт</b> <code>quest_completer.js</code></summary>
 
-## Возможности
+<br>
 
-| Функция | Описание |
-|---------|----------|
-| Поиск квестов | Список с фильтрами |
-| Video / Game / Stream / Activity | Те же методы автоматизации |
-| Achievement bypass | Native-запросы к discordsays (без CSP на desktop) |
-| Панель | Перетаскиваемый UI с прогрессом |
-| Auto-enroll / Auto-claim | В настройках плагина |
-| Лимиты API | Очередь + backoff |
-| Чистый stop | Откат патчей сторов |
+Если Vencord недоступен. Вставлять заново после каждой перезагрузки Discord.
+
+1. Discord → **Discover → Quests**, примите нужные квесты  
+2. DevTools → **Console** (`Ctrl+Shift+I` / `Cmd+Option+I`)  
+3. Введите `allow pasting` → Enter  
+4. Вставьте [`quest_completer.js`](quest_completer.js) → Enter  
+5. Выберите квесты → **START**
+
+| | Плагин | Консоль |
+|:--|:--|:--|
+| Установка | Один раз + rebuild | Каждый сеанс |
+| Achievements | Native helpers | Часто режет CSP |
+| После reload | Остаётся | Пропадает |
+
+Скрыть UI: `>` или `Shift+.`. Остановка — **STOP**.
+
+</details>
+
+---
 
 ## Настройки
 
-| Опция | По умолчанию | Описание |
-|-------|--------------|----------|
+| Опция | По умолч. | Что делает |
+|:------|:---------:|:-----------|
+| Auto-start | Вкл | Открывать панель при загрузке плагина |
 | Auto-enroll | Вкл | Принимать квесты перед запуском |
-| Auto-claim | Выкл | Автоклейм наград |
+| Auto-claim | Выкл | Автоматически забирать награды |
+| File logging | Вкл | Писать в `Documents/QuestMaster/questmaster.log` |
+| Concurrent games | 1 | Параллельные game / stream / activity |
+| Concurrent videos | 3 | Параллельные video-квесты |
 | Sound | Выкл | Звук при завершении |
-| Random delay | Выкл | Паузы 1–30 мин |
+| Random delay | Выкл | Пауза 1–30 мин между циклами |
 | Hide activity | Выкл | Скрыть фейковый Rich Presence |
-| Auto-start | Выкл | Открывать UI при включении плагина |
+
+---
 
 ## Типы квестов
 
-| Тип | Метод | Примечание |
-|-----|-------|-----------|
-| `WATCH_VIDEO` | спуф video-progress | ~2–4 мин |
-| `PLAY_ON_DESKTOP` | фейковый процесс + heartbeat | Desktop |
-| `STREAM_ON_DESKTOP` | спуф stream metadata | Desktop |
-| `PLAY_ACTIVITY` | heartbeat в голосе | Нужен voice-канал |
-| `ACHIEVEMENT_IN_ACTIVITY` | OAuth + native proxy | Desktop Vencord |
+| Тип | Как работает | Нужно |
+|:----|:-------------|:------|
+| `WATCH_VIDEO` | Спуф `video-progress` | — |
+| `PLAY_ON_DESKTOP` | Фейковый процесс + heartbeat стора | Desktop |
+| `STREAM_ON_DESKTOP` | Спуф stream metadata | Desktop + стрим кому-то |
+| `PLAY_ACTIVITY` | Heartbeat в голосовом | Voice-канал |
+| `ACHIEVEMENT_IN_ACTIVITY` | OAuth + native `discordsays` | Desktop Vencord |
+
+---
 
 ## Структура
 
-```
+```text
 discord-quest-auto-completer/
-├── questMaster/                 # плагин Vencord ← в src/userplugins/
+├── questMaster/           ← плагин Vencord
 │   ├── index.tsx
 │   ├── engine.ts
 │   ├── mods.ts
 │   ├── native.ts
 │   ├── settings.ts
 │   ├── constants.ts
-│   ├── styles.css
-│   └── README.md
-├── quest_completer.js           # консольный вариант — вставить в DevTools
+│   └── styles.css
+├── quest_completer.js     консольный fallback
 ├── README.md / README.ru.md
-└── …
+├── SECURITY.md / SECURITY.ru.md
+└── LICENSE
 ```
+
+---
 
 ## Проблемы
 
-| Проблема | Решение |
-|----------|---------|
-| Плагина нет | Проверьте путь и rebuild |
-| Modules not found | Discord обновился — правьте `mods.ts` |
-| Achievement не работает | Нужен Discord Desktop + Vencord |
-| Rate limited | Подождите или перезагрузите |
-| CAPTCHA | Пройдите вручную в Discord |
-| Вставка в консоль запрещена | Сначала введите `allow pasting` |
-| Панель не появляется (скрипт) | Перезагрузите Discord, подождите и вставьте снова |
+| Симптом | Что сделать |
+|:--------|:------------|
+| Плагина нет в списке | Путь `src/userplugins/questMaster` → rebuild → рестарт |
+| Modules missing | Discord обновился — проверьте `mods.ts` |
+| Achievement не идёт | Нужен **Desktop** + Vencord |
+| API 404 / HTML-страницы | Обновите QuestMaster |
+| Rate limited | Подождите или перезагрузите Discord |
+| CAPTCHA при клейме | Пройдите в UI Discord |
+| Консоль блокирует вставку | Сначала `allow pasting` |
+| Нет панели (скрипт) | Reload Discord → подождите → вставьте снова |
 
-## Участие
+---
 
-[CONTRIBUTING.md](CONTRIBUTING.md) / [CONTRIBUTING.ru.md](CONTRIBUTING.ru.md).
+## Безопасность
+
+Уязвимости — только приватно: [SECURITY.ru.md](SECURITY.ru.md).
+
+---
 
 ## Лицензия
 
-Документация репозитория — MIT где применимо; код плагина — **GPL-3.0-or-later** (Vencord). См. заголовки файлов и [LICENSE](LICENSE).
+[MIT](LICENSE) для репозитория. Код в `questMaster/` также с заголовками **GPL-3.0-or-later** (совместимость с Vencord).
 
-## Благодарности
+---
 
-Основано на идее консольного QuestMaster. Плагин Vencord поддерживает **nandak070**.
+<div align="center">
+
+<sub>Для тех, кто хочет закрыть квесты — а не жить в Discover.</sub>
+
+<br><br>
+
+**nandak070** · [GitHub](https://github.com/nanda070) · [cheterin.online](https://cheterin.online)
+
+</div>
