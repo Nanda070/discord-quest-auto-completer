@@ -2,7 +2,7 @@
 
 # QuestMaster
 
-**Auto-complete Discord Quests — inside Discord.**
+**Auto-complete Discord Quests — inside Discord**
 
 [English](README.md) · [Русский](README.ru.md)
 
