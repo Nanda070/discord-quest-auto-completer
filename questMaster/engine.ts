@@ -1123,7 +1123,7 @@ const Traffic = {
     /** Session that owns the current process() loop */
     ownerSession: 0,
 
-    async enqueue(url: string, body: any) {
+    async enqueue(url: string, body: any): Promise<any> {
         if (!RUNTIME.running) return Promise.reject(new Error("Stopped"));
         return new Promise((resolve, reject) => {
             this.queue.push({ url, body, resolve, reject, attempts: 0 });
