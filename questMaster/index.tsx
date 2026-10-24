@@ -1,11 +1,11 @@
 /*
  * Vencord, a Discord client mod
- * Copyright (c) 2026 Nanda
+ * Copyright (c) 2026 Nandak070
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 import definePlugin from "@utils/types";
-import { Button, showToast, Toasts } from "@webpack/common";
+import { Button, showToast } from "@webpack/common";
 import { settings } from "./settings";
 import { startQuestMaster, stopQuestMaster } from "./engine";
 import "./styles.css";
@@ -13,10 +13,7 @@ import "./styles.css";
 function openQuestMaster() {
     void startQuestMaster().catch(error => {
         console.error("[QuestMaster] Failed to start:", error);
-        showToast(
-            `QuestMaster could not start: ${error?.message ?? "unknown error"}`,
-            Toasts.Type.FAILURE
-        );
+        showToast({ text: `QuestMaster could not start: ${error?.message ?? "unknown error"}`, variant: "critical" });
     });
 }
 
@@ -26,7 +23,7 @@ export default definePlugin({
         "Auto-complete Discord Quests with an in-app dashboard (video, game, stream, activity, achievements).",
     authors: [
         {
-            name: "Nanda",
+            name: "Nandak070",
             id: 1219803151180370021n,
         },
     ],

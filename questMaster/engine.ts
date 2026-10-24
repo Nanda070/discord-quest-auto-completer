@@ -1,11 +1,11 @@
 /*
  * Vencord, a Discord client mod
- * Copyright (c) 2026 Nanda
+ * Copyright (c) 2026 Nandak070
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
 import { PluginNative } from "@utils/types";
-import { showToast, Toasts } from "@webpack/common";
+import { showToast } from "@webpack/common";
 import {
     BLACKLISTED_QUEST_ID,
     EVT,
@@ -2519,10 +2519,7 @@ async function main() {
             "[System] Failed to load Discord modules. Aborting.",
             "err"
         );
-        showToast(
-            "QuestMaster could not start: required Discord modules are unavailable. Restart Discord and try again.",
-            Toasts.Type.FAILURE
-        );
+        showToast({ text: "QuestMaster could not start: required Discord modules are unavailable. Restart Discord and try again.", variant: "critical" });
         stopQuestMaster();
         return;
     }
@@ -2559,10 +2556,7 @@ async function main() {
     if (!quests.length) {
         Logger.log("[System] All available quests are completed!", "success");
         Logger.showEmptyState();
-        showToast(
-            "QuestMaster found no incomplete quests.",
-            Toasts.Type.MESSAGE
-        );
+        showToast({ text: "QuestMaster found no incomplete quests.", variant: "default" });
         return;
     }
 
@@ -2613,10 +2607,7 @@ async function main() {
                     Logger.showEmptyState(
                         "Quests failed or unavailable. Check the log, then click Retry."
                     );
-                    showToast(
-                        "QuestMaster: quests failed/skipped. Check logs and retry.",
-                        Toasts.Type.FAILURE
-                    );
+                    showToast({ text: "QuestMaster: quests failed/skipped. Check logs and retry.", variant: "critical" });
                     return;
                 }
                 Logger.log(
@@ -2874,7 +2865,7 @@ export async function startQuestMaster(): Promise<void> {
         try {
             Logger.log(`[System] FATAL: ${msg}`, "err");
         } catch (_) {}
-        showToast(`QuestMaster stopped: ${msg}`, Toasts.Type.FAILURE);
+        showToast({ text: `QuestMaster stopped: ${msg}`, variant: "critical" });
         stopQuestMaster();
     });
 
