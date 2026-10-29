@@ -4,8 +4,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
+import { Button } from "@components/Button";
 import definePlugin from "@utils/types";
-import { Button, showToast } from "@webpack/common";
+import { showToast } from "@webpack/common";
 import { settings } from "./settings";
 import { startQuestMaster, stopQuestMaster } from "./engine";
 import "./styles.css";
